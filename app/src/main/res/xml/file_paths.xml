@@ -1,0 +1,8 @@
+<paths>
+    <files-path
+        name="images"
+        path="." />
+    <files-path
+        name="json"
+        path="." />
+</paths>

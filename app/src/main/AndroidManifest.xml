@@ -12,9 +12,18 @@
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" /> <!-- 如果设置了target >= 28 如果需要启动后台定位则必须声明这个权限 -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 如果您的应用需要后台定位权限，且有可能运行在Android Q设备上,并且设置了target>28，必须增加这个权限声明 -->
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> <!-- 允许写设备缓存，用于问题排查 -->
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- 允许程序访问摄像头进行拍照 -->
     <uses-permission
         android:name="android.permission.WRITE_SETTINGS"
-        tools:ignore="ProtectedPermissions" />
+        tools:ignore="ProtectedPermissions" /> <!-- 允许程序写入系统设置 -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" /> <!-- 允许程序访问摄像头进行拍照 -->
+    <queries>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+    </queries>
 
     <application
         android:name=".service.App"
@@ -27,6 +36,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FindMyCar"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.PictureActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.RouteActivity"
             android:exported="false" />
@@ -43,6 +55,15 @@
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="@string/AMAP_API_KEY" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.noworld.findmycar.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>
