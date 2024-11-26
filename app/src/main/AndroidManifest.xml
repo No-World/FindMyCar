@@ -42,7 +42,7 @@
         <service android:name="com.amap.api.location.APSService" /> <!-- 高德的Key  value里面的值请使用自己的Key -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="${AMAP_API_KEY}" />
+            android:value="@string/AMAP_API_KEY" />
     </application>
 
 </manifest>
