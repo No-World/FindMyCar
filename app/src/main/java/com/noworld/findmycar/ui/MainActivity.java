@@ -74,8 +74,6 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
 
     // 请求码
     private final int REQUEST_CAMERA_PERMISSION = 101;
-    private final int REQUEST_IMAGE_CAPTURE = 102;
-    private final int REQUEST_PICK_IMAGE = 103;
 
     private ActivityResultLauncher<Intent> captureImageLauncher;
     private ActivityResultLauncher<Intent> pickImageLauncher;
@@ -771,7 +769,7 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
      */
     private void showImagePickerDialog() {
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
-        builder.setTitle("选择头像");
+        builder.setTitle("请选择车辆及周围环境图片");
         builder.setItems(new CharSequence[]{"拍照", "从相册选择"}, (dialog, which) -> {
             if (which == 0) {
                 Log.d(TAG, "拍照");
