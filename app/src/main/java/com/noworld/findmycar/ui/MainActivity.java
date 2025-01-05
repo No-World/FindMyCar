@@ -138,7 +138,10 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
         return true;
     }
 
-    //点击实现的操作
+
+    /**
+     * 点击实现的操作
+     */
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case 1:
@@ -621,8 +624,8 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
         }
     }
 
-    /**
-     * 下列均为拍摄/导入车辆位置图片模块
+    /*
+      下列均为拍摄/导入车辆位置图片模块
      */
 
     /**
