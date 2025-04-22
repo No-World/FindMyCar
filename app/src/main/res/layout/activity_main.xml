@@ -83,7 +83,7 @@
         android:focusable="true"
         android:src="@drawable/ic_navigation"
         app:hoveredFocusedTranslationZ="18dp"
-        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/fab_picture"
         app:layout_constraintBottom_toBottomOf="parent"
         app:pressedTranslationZ="18dp" />
     <!--右下角 结束-->
