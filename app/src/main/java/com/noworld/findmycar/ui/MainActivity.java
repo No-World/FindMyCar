@@ -512,7 +512,7 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.fab_marker_car) {
+        if (view.getId() == R.id.fab_marker_car) { // 车辆标记添加按钮
             // 添加车辆标记
             showMsg("添加车辆标记");
             // 弹出弹窗确认是否在当前位置添加车辆标记
@@ -557,7 +557,7 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
                     })
                     .setNegativeButton("取消", null)
                     .show();
-        } else if (view.getId() == R.id.fab_car_del) {
+        } else if (view.getId() == R.id.fab_car_del) { // 车辆标记删除按钮
             // 删除车辆标记
             showMsg("删除车辆标记");
             // 弹出弹窗确认是否在当前位置添加车辆标记
@@ -571,7 +571,7 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
                     })
                     .setNegativeButton("取消", null)
                     .show();
-        } else if (view.getId() == R.id.fab_car_location) {
+        } else if (view.getId() == R.id.fab_car_location) { // 车辆定位按钮
             // 车辆定位
             showMsg("车辆定位");
             if (carLatLng != null) {
@@ -580,28 +580,21 @@ public class MainActivity extends AppCompatActivity implements AMapLocationListe
             } else {
                 showMsg("车辆位置未标记");
             }
-        } else if (view.getId() == R.id.fab_navigation) {
+        } else if (view.getId() == R.id.fab_navigation) { // 导航按钮
             new AlertDialog.Builder(this)
                     .setTitle("导航")
                     .setMessage("是否导航到车辆位置？")
                     .setPositiveButton("确定", (dialog, which) -> {
-                        if (carLatLng != null) {
-                            // 跳转到导航页面
-                            // 创建Intent以启动RouteActivity
-                            Intent intent = new Intent(this, RouteActivity.class);
-                            // 将车辆位置作为额外参数传递
-                            intent.putExtra("latitude", carLatLng.latitude);
-                            intent.putExtra("longitude", carLatLng.longitude);
-                            // 启动RouteActivity
-                            startActivity(intent);
-                            showMsg("开始导航，请确保车辆和自身位置均处于地面");
-                        } else {
-                            showMsg("车辆位置未标记");
-                        }
+//                        Uri uri = Uri.parse("amapuri://route/plan/?dlat="+"目的地lat"+"&dlon="+"目的地lng"+"&dname="+"目的地名称"+"&dev=0&t=0");
+//                        Activity.startActivity(new Intent(Intent.ACTION_VIEW, uri));
+                        Uri uri = Uri.parse("amapuri://route/plan/?dlat=" + carLatLng.latitude + "&dlon=" + carLatLng.longitude + "&dname=" + "我的车" + "&dev=0&t=0");
+                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                        // 跳转至高德地图
+                        startActivity(intent);
                     })
                     .setNegativeButton("取消", null)
                     .show();
-        } else if (view.getId() == R.id.fab_picture) {
+        } else if (view.getId() == R.id.fab_picture) { // 车辆图片按钮
             Log.d(TAG, "按下了picture按钮");
             // 检查目录下是否存在car.png文件
             File file = new File(getFilesDir(), "car.png");

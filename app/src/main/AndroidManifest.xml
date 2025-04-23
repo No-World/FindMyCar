@@ -40,9 +40,6 @@
             android:name=".ui.PictureActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.RouteActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
